@@ -2,7 +2,7 @@
 # [3, 5, 7] [1, 2, 6, 8]
 def merge( arrA, arrB ):
     incrementer = 0
-    while len(arrA) > 0:
+    while len(arrA) > 0 and len(arrB) > 0:
         if arrA[0] > arrB[len(arrB)-1]:
             arrB.append(arrA[0])
             arrA.remove(arrA[0])
@@ -14,7 +14,7 @@ def merge( arrA, arrB ):
             incrementer = 0
     return arrB
 
-print(merge([6, 7, 8, 9], [1, 2, 3, 4, 5]))
+print('merging two arrays', merge([6, 7, 8, 9], [1, 2, 3, 4, 5]))
 
 # TO-DO: implement the Merge Sort function below USING RECURSION
 def merge_sort(arr):
@@ -22,8 +22,6 @@ def merge_sort(arr):
         midpoint = len(arr)//2
         left = merge_sort(arr[0:midpoint])
         right = merge_sort(arr[midpoint:])
-        # merge_sort(left)
-        # merge_sort(right)
         arr = merge(left, right)
     return arr
 
