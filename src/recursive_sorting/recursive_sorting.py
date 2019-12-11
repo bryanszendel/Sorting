@@ -1,26 +1,15 @@
 # TO-DO: complete the helper function below to merge 2 sorted arrays
 # [3, 5, 7] [1, 2, 6, 8]
 def merge( arrA, arrB ):
-    # elements = len( arrA ) + len( arrB )
-    # merged_arr = [0] * elements
-    # TO-DO
-    if len(arrA) <= len(arrB):
-        shorter = arrA
-        longer = arrB
-    else:
-        shorter = arrB
-        longer = arrA
-
     incrementer = 0
-    while len(shorter) > 0:
-        if shorter[0] > longer[incrementer]:
+    while len(arrA) > 0:
+        if arrA[0] > arrB[incrementer]:
             incrementer += 1
         else:
-            temp = shorter[0]
-            longer.insert(incrementer, temp)
-            shorter.remove(shorter[0])
+            arrB.insert(incrementer, arrA[0])
+            arrA.remove(arrA[0])
             incrementer = 0
-    return longer
+    return arrB
 
 print(merge([3, 5, 7], [1, 2, 6, 8]))
 
