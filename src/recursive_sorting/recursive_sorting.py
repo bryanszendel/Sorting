@@ -3,7 +3,10 @@
 def merge( arrA, arrB ):
     incrementer = 0
     while len(arrA) > 0:
-        if arrA[0] > arrB[incrementer]:
+        if arrA[0] > arrB[len(arrB)-1]:
+            arrB.append(arrA[0])
+            arrA.remove(arrA[0])
+        elif arrA[0] > arrB[incrementer]:
             incrementer += 1
         else:
             arrB.insert(incrementer, arrA[0])
@@ -11,14 +14,20 @@ def merge( arrA, arrB ):
             incrementer = 0
     return arrB
 
-print(merge([3, 5, 7], [1, 2, 6, 8]))
+print(merge([6, 7, 8, 9], [1, 2, 3, 4, 5]))
 
 # TO-DO: implement the Merge Sort function below USING RECURSION
-def merge_sort( arr ):
-    # TO-DO
-
+def merge_sort(arr):
+    if len(arr) > 1:
+        midpoint = len(arr)//2
+        left = merge_sort(arr[0:midpoint])
+        right = merge_sort(arr[midpoint:])
+        # merge_sort(left)
+        # merge_sort(right)
+        arr = merge(left, right)
     return arr
 
+print(merge_sort([9, 7, 6, 5, 8, 3, 2, 1, 4]))
 
 # STRETCH: implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
